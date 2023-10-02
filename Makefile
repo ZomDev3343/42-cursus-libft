@@ -5,6 +5,9 @@ libft.a: *.c libft.h
 	ar -rc libft.a *.o
 	ranlib libft.a
 
+god: *.c libft.h
+	clang -Wall -Wextra -Werror *.c
+
 clean:
 	rm *.o
 
