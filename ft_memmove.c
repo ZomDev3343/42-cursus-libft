@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:09:54 by truello           #+#    #+#             */
-/*   Updated: 2023/10/02 16:02:01 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:05:11 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
 
+	if (!dst)
+		return (0);
 	i = 0;
 	while (i < len)
 	{

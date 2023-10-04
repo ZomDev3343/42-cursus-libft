@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:39:27 by truello           #+#    #+#             */
-/*   Updated: 2023/10/03 13:58:49 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:15:10 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	int		i;
 	size_t	s2_len;
 
+	if (!s1 || !s2)
+		return (0);
 	i = -1;
 	s2_len = ft_strlen(s2);
 	len = ft_strlen(s1) + s2_len;

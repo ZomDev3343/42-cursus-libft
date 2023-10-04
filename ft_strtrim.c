@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:59:43 by truello           #+#    #+#             */
-/*   Updated: 2023/10/03 14:56:03 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:17:00 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	start = 0;
 	end = 0;
+	if (!s1 || !set)
+		return (0);
 	while (in_set(set, s1[i]))
 		i++;
 	start = i;

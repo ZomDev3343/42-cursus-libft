@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:24:20 by truello           #+#    #+#             */
-/*   Updated: 2023/10/02 16:00:04 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:04:53 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 
+	if (!dst)
+		return (0);
 	i = 0;
 	while (i < n)
 	{

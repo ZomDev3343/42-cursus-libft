@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 10:42:33 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 10:48:31 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:20:19 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	size_t	i;
 	size_t	len;
 
+	if (!s || !(*f))
+		return (0);
 	i = 0;
 	len = ft_strlen(s);
 	while (i < len)

@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:10:25 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 10:40:17 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:19:55 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*new_string;
 	size_t	len;
 
+	if (!s || !(*f))
+		return (0);
 	len = ft_strlen(s) + 1;
 	new_string = (char *) ft_calloc(len, 1);
 	if (!new_string)

@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:27:55 by truello           #+#    #+#             */
-/*   Updated: 2023/10/03 10:39:28 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:12:45 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	j = 0;
+	if (!haystack || !needle)
+		return (0);
 	if (needle[0] == 0)
 		return ((char *) haystack);
 	while (haystack[i])

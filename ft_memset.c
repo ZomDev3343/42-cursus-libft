@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 13:37:29 by truello           #+#    #+#             */
-/*   Updated: 2023/10/02 18:28:48 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 11:04:13 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t	i;
 
+	if (!b)
+		return (0);
 	if (c < 0 || c > 255)
 		return (b);
 	i = 0;
