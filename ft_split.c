@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:45:11 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 17:58:28 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 18:25:41 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,21 @@ static char	**free_parts(char **parts)
 
 static int	get_nb_parts(char *str, char c)
 {
-	while (*(++str))
-		if ((*str == c && *(str - 1) != c)
-			|| (!*(str + 1) && *str != c))
-			return (1 + get_nb_parts(str, c));
-	return (0);
+	size_t	nb_parts;
+	size_t	i;
+
+	i = 1;
+	nb_parts = 0;
+	while (str[i] != 0)
+	{
+		if ((str[i] == c && str[i - 1] != c)
+			|| (str[i + 1] == 0 && str[i] != c))
+		{
+			nb_parts++;
+		}
+		i++;
+	}
+	return (nb_parts);
 }
 
 static char	**init_parts(char *str, char c)

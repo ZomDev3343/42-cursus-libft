@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:13:24 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 11:07:19 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 18:28:09 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 
-	if (!dst || !src)
-		return (0);
 	i = 0;
 	while (i < dstsize - 1 && dstsize > 0 && src[i])
 	{
