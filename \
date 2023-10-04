@@ -1,50 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 10:39:44 by truello           #+#    #+#             */
-/*   Updated: 2023/10/03 17:09:13 by truello          ###   ########.fr       */
+/*   Created: 2023/10/03 15:49:44 by truello           #+#    #+#             */
+/*   Updated: 2023/10/03 16:13:30 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_itoa(int n)
 {
+	long int		nbr;
 	size_t			i;
-	long int		r;
-	unsigned char	minus_count;
+	size_t			n_len;
+	char			*r;
+	unsigned char	minus;
 
-	i = 0;
-	r = 0;
-	minus_count = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if (str[i] == '-')
+	nbr = n;
+	n_len = 0;
+	minus = 0;
+	if (n < 0)
 	{
-		minus_count = 1;
-		i++;
+		minus = 1;
+		nbr *= -1;
 	}
-	while (ft_isdigit(str[i]))
+	while (n > 0)
 	{
-		r = r * 10 + (str[i] - '0');
-		i++;
+		n_len++;
+		n /= 10;
 	}
-	if (minus_count == 1)
-		r *= -1;
-	return ((int) r);
+	r = (char *) ft_calloc(n_len + minus + 1, 1);
+	if (minus)
+		r[0] = '-';
+	i = n_len - 1;
+	while (i >= minus)
+	{
+		r[i + minus] = nbr % 10;
+		nbr /= 10;
+		i--;
+	}
+	return (r);
 }
-/*
+
 #include <stdio.h>
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		printf("ft_atoi : %d\n", ft_atoi(av[1]));
-		printf("atoi : %d\n", atoi(av[1]));
+		int nb = atoi(av[1]);
+		char *result = ft_itoa(nb);
+		printf("ft_itoa : %s\n", result);
+		free(result);
 	}
 	return (0);
-}*/
+}

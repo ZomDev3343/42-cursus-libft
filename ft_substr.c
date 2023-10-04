@@ -1,50 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 10:39:44 by truello           #+#    #+#             */
-/*   Updated: 2023/10/03 17:09:13 by truello          ###   ########.fr       */
+/*   Created: 2023/10/03 13:20:28 by truello           #+#    #+#             */
+/*   Updated: 2023/10/03 13:38:45 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t			i;
-	long int		r;
-	unsigned char	minus_count;
+	char	*substr;
+	size_t	i;
 
-	i = 0;
-	r = 0;
-	minus_count = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if (str[i] == '-')
+	if (start >= ft_strlen(s))
+		return (0);
+	i = start;
+	substr = (char *) ft_calloc(len, 1);
+	while (substr && s[i] && i - start < len)
 	{
-		minus_count = 1;
+		substr[i - start] = s[i];
 		i++;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		r = r * 10 + (str[i] - '0');
-		i++;
-	}
-	if (minus_count == 1)
-		r *= -1;
-	return ((int) r);
+	return (substr);
 }
 /*
 #include <stdio.h>
+#include <stdlib.h>
 int	main(int ac, char **av)
 {
-	if (ac == 2)
+	if (ac == 4)
 	{
-		printf("ft_atoi : %d\n", ft_atoi(av[1]));
-		printf("atoi : %d\n", atoi(av[1]));
+		char *str = av[1];
+		int start = atoi(av[2]);
+		int len = atoi(av[3]);
+
+		char *substr = ft_substr(str, start, len);
+		printf("Substr : %s\n", substr);
+		free(substr);
 	}
 	return (0);
 }*/

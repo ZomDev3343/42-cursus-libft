@@ -1,50 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 10:39:44 by truello           #+#    #+#             */
-/*   Updated: 2023/10/03 17:09:13 by truello          ###   ########.fr       */
+/*   Created: 2023/10/04 10:42:33 by truello           #+#    #+#             */
+/*   Updated: 2023/10/04 10:48:31 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	size_t			i;
-	long int		r;
-	unsigned char	minus_count;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	r = 0;
-	minus_count = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		i++;
-	if (str[i] == '-')
+	len = ft_strlen(s);
+	while (i < len)
 	{
-		minus_count = 1;
+		(*f)(i, s + i);
 		i++;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		r = r * 10 + (str[i] - '0');
-		i++;
-	}
-	if (minus_count == 1)
-		r *= -1;
-	return ((int) r);
 }
 /*
+void	toupperi(unsigned int i, char *c)
+{
+	if (!i)
+	;
+	*c = ft_toupper(*c);
+}
+
 #include <stdio.h>
 int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		printf("ft_atoi : %d\n", ft_atoi(av[1]));
-		printf("atoi : %d\n", atoi(av[1]));
+		char *str = av[1];
+
+		ft_striteri(str, &toupperi);
+		printf("Strmapi : %s\n", str);
 	}
 	return (0);
 }*/
