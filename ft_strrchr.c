@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:05:04 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 11:09:58 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 13:53:15 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,15 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	i;
 	int		found_idx;
 
-	if (!s)
-		return (0);
 	i = 0;
 	found_idx = -1;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (char) c)
 			found_idx = i;
 		i++;
 	}
-	if (c == 0)
+	if ((char) c == 0)
 		return ((char *) s + i);
 	if (found_idx > -1)
 		return ((char *) s + found_idx);

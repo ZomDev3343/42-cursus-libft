@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:39:44 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 11:13:23 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 14:32:10 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ int	ft_atoi(const char *str)
 	long int		r;
 	unsigned char	minus_count;
 
-	if (!str)
-		return (0);
 	i = 0;
 	r = 0;
 	minus_count = 0;
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
-	if (str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		minus_count = 1;
+		if (str[i] == '-')
+			minus_count = 1;
 		i++;
 	}
 	while (ft_isdigit(str[i]))

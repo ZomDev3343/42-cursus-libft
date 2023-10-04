@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:20:28 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 11:14:46 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 16:12:40 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	i;
+	size_t	s_len;
 
-	if (!s || start >= ft_strlen(s))
-		return (0);
+	s_len = ft_strlen(s);
+	if (start >= s_len || len == 0)
+		return ((char *) ft_calloc(1, 1));
 	i = start;
-	substr = (char *) ft_calloc(len, 1);
-	while (substr && s[i] && i - start < len)
+	if (len > s_len)
+		substr = (char *) ft_calloc(s_len - start + 1, 1);
+	else
+		substr = (char *) ft_calloc(len + 1, 1);
+	if (!substr)
+		return (0);
+	while ((unsigned char) s[i] && i - start < len)
 	{
-		substr[i - start] = s[i];
+		substr[i - start] = (unsigned char) s[i];
 		i++;
 	}
 	return (substr);

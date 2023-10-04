@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:45:11 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 10:17:16 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/04 17:58:28 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,8 @@ static char	**init_parts(char *str, char c)
 	char	**parts;
 	int		nb_parts;
 
-	if (!*str)
-		return (0);
 	nb_parts = get_nb_parts(str, c);
 	parts = (char **) ft_calloc(nb_parts + 1, sizeof(char *));
-	if (!parts)
-		return (0);
 	return (parts);
 }
 
@@ -53,6 +49,8 @@ static void	fill_part(char *str, char *part, int part_len, int *start)
 {
 	int	og_pl;
 
+	if (!str[0])
+		return ;
 	og_pl = part_len;
 	while (--part_len >= 0)
 		part[part_len] = str[*start + part_len];
@@ -70,7 +68,7 @@ char	**ft_split(char const *s, char c)
 	current_part = 0;
 	start = 0;
 	parts = init_parts((char *) s, c);
-	while (current_part < get_nb_parts((char *) s, c) && parts)
+	while (parts && current_part < get_nb_parts((char *) s, c))
 	{
 		if (s[i] == c)
 			start++;
@@ -105,6 +103,7 @@ int	main(int ac, char **av)
 			printf("Part[%d] : %s\n", i, res[i]);
 			i++;
 		}
+		printf("Part[%d] : %s\n", i, res[i]);
 		free_parts(res);
 	}
 	return (0);

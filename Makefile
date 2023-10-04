@@ -1,17 +1,26 @@
-all: libft.a
+SRCS=$(wildcard ./*.c)
+OBJ=$(SRCS:.c=.o)
+HEADER=libft.h
+CC=cc
+NAME=libft.a
 
-libft.a: *.c libft.h
-	cc -Wall -Wextra -Werror -c *.c
-	ar -rc libft.a *.o
-	ranlib libft.a
 
-god: *.c libft.h
+all: $(NAME)
+
+$(NAME): $(OBJ) $(HEADER)
+	ar -rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+god: $(SRCS) $(HEADER)
 	clang -Wall -Wextra -Werror *.c
 
+%.o: %.c
+	$(CC) -c $< -o $@ -Wall -Wextra -Werror
+
 clean:
-	rm *.o
+	rm -rf *.o
 
 fclean: clean
-	rm libft.a
+	rm -rf $(NAME)
 
 re: clean all
