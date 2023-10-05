@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:45:11 by truello           #+#    #+#             */
-/*   Updated: 2023/10/04 18:25:41 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/05 11:10:26 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	get_nb_parts(char *str, char c)
 	size_t	nb_parts;
 	size_t	i;
 
+	if (str[0] == 0)
+		return (0);
 	i = 1;
 	nb_parts = 0;
 	while (str[i] != 0)
@@ -49,7 +51,7 @@ static char	**init_parts(char *str, char c)
 {
 	char	**parts;
 	int		nb_parts;
-
+	
 	nb_parts = get_nb_parts(str, c);
 	parts = (char **) ft_calloc(nb_parts + 1, sizeof(char *));
 	return (parts);
@@ -85,7 +87,7 @@ char	**ft_split(char const *s, char c)
 		if ((s[i] != c && s[i + 1] == c)
 			|| !s[i + 1])
 		{
-			parts[current_part] = (char *) ft_calloc(i + 1 - start, 1);
+			parts[current_part] = (char *) ft_calloc(i + 1 - start + 1, 1);
 			if (!parts[current_part])
 				return (free_parts(parts));
 			fill_part((char *) s, parts[current_part], i + 1 - start, &start);
