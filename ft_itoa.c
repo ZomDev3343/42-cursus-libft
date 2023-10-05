@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:49:44 by truello           #+#    #+#             */
-/*   Updated: 2023/10/03 17:09:46 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/05 11:19:12 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*init_str(int n, unsigned char *minus, size_t *n_len)
 		(*n_len)++;
 		n /= 10;
 	}
-	r = (char *) ft_calloc(*n_len + *minus + 1, 1);
+	r = (char *) ft_calloc(*n_len + *minus + 1 + (*n_len == 0), 1);
 	if (!r)
 		return (0);
 	if (*minus)
@@ -46,10 +46,10 @@ char	*ft_itoa(int n)
 	r = init_str(n, &minus, &n_len);
 	if (!r)
 		return (0);
-	if (n_len == 0)
-		r[0] = '0';
 	if (minus == 1)
 		nbr *= -1;
+	if (n_len == 0)
+		r[0] = '0';
 	while (i < n_len)
 	{
 		r[minus + n_len - i - 1] = '0' + nbr % 10;

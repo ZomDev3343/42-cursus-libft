@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:45:11 by truello           #+#    #+#             */
-/*   Updated: 2023/10/05 11:10:26 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/05 11:11:47 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	**init_parts(char *str, char c)
 {
 	char	**parts;
 	int		nb_parts;
-	
+
 	nb_parts = get_nb_parts(str, c);
 	parts = (char **) ft_calloc(nb_parts + 1, sizeof(char *));
 	return (parts);
