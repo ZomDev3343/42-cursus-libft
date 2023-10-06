@@ -3,7 +3,6 @@ OBJ=$(SRCS:.c=.o)
 BONUS=lst1_bonus.c lst2_bonus.c
 BONUS_OBJ=$(OBJ) $(BONUS:.c=.o)
 HEADER=libft.h
-BONUS_HEADER=_bonus.h
 CC=cc
 NAME=libft.a
 
@@ -13,7 +12,7 @@ $(NAME): $(OBJ) $(HEADER)
 	ar -rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-bonus: $(OBJ) $(BONUS_OBJ) $(HEADER) $(BONUS_HEADER)
+bonus: $(BONUS_OBJ) $(HEADER)
 	ar -rc $(NAME) $(BONUS_OBJ)
 	ranlib $(NAME)
 
@@ -27,3 +26,5 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: clean all
+
+.PHONY: all bonus clean fclean re
