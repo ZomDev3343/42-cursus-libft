@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:05:04 by truello           #+#    #+#             */
-/*   Updated: 2023/10/06 16:42:04 by truello          ###   ########.fr       */
+/*   Updated: 2023/10/06 16:43:07 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	i;
 	size_t	s_len;
 	char	*str;
-	
+
 	str = (char *) s;
 	i = 0;
 	s_len = ft_strlen(str);
